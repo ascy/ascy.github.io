@@ -1,5 +1,4 @@
-//(function () {
-//    'use strict';
+'use strict';
 
 if (!navigator.getUserMedia) {
     navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -131,4 +130,3 @@ window.onload = function () {
     
     playback_button.onclick = playRecord;
 };
-//}());
