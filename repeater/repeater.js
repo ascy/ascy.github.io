@@ -116,17 +116,37 @@ function playRecord() {
     
     audio_node = audioContext.createBufferSource();
     audio_node.buffer = audio_buffer;
-    audio_node.connect(recorderNode);
+    if (bypassing) {
+        audio_node.connect(recorderNode);
+    } else {
+        audio_node.connect(audioContext.destination);
+    }
     
     audio_node.start();
+}
+
+function changeVolume(val)
+{
+    gainNode.gain.value = val;
 }
 
 window.onload = function () {
     initAudio();
     var record_button = document.getElementById("record_button"),
-        playback_button = document.getElementById("playback_button");
+        playback_button = document.getElementById("playback_button"),
+        volume_slider = document.getElementById("volume_slider"),
+        bypass_checkbox = document.getElementById("bypass_checkbox");
+    
     record_button.onmousedown = beginRecord;
     record_button.onmouseup = endRecord;
     
     playback_button.onclick = playRecord;
+    
+    volume_slider.onchange = function() {
+        changeVolume(volume_slider.value);
+    };
+    
+    bypass_checkbox.onchange = function() {
+        bypassing = bypass_checkbox.checked;
+    }
 };
