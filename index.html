@@ -2,21 +2,44 @@
 <html>
     <head>
         <title>Ascy's HomePage</title>
-        <link rel="stylesheet" href="index.css" type="text/css"/>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"/>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/index.css" type="text/css"/>
     </head>
-    <body>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="selected" href="index.html">About</a></li>
-                <li><a href="index.html">Projects</a></li>
-                <li><a href="index.html">Github</a></li>
-            </ul>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Chi Shen</a>
+                </div>
+                <div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#about">About</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Projects<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#work">Work</a></li>
+                                    <li><a href="#personal">Personal</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         
-<!--
-        <div id="main_div">
-            <a href="repeater/repeater.html">Audio Repeater</a>
+        <div id="about" class="container-fluid">
         </div>
--->
+        <div id="work" class="container-fluid">
+        </div>
+        <div id="personal" class="container-fluid">
+        </div>
     </body>
 </html>
