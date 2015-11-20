@@ -2,23 +2,42 @@ body {
     position: relative;
 }
 
+.dropdown-menu > li > a:hover {
+    background-color: #e3e3e3;
+}
+
 #about {
-    padding-top: 50px;
-    height: 500px;
+    text-align: center;
+    padding-top: 300px;
+    padding-bottom: 300px;
+/*    height: 100vh;*/
     color: #fff;
     background-color: #1E88E5;
 }
 
 #work {
     padding-top: 50px;
-    height: 500px;
+    height: 700px;
     color: #fff;
     background-color: #673ab7;
 }
 
 #personal {
     padding-top: 50px;
-    height: 500px;
+    height: 700px;
     color: #fff;
     background-color: #00bcd4;
+}
+
+h1 small {
+    color: white;
+}
+
+.contact-icon {
+    margin: 5px;
+}
+
+.contact-icon i {
+    font-size: 32px;
+    color: black;
 }

@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ascy's HomePage</title>
+        <meta charset="utf-8">
+        <title>Chi Shen's HomePage</title>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"/>
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="css/index.css" type="text/css"/>
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"/>
     </head>
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
-                <div class="navbar-header">
+                <div class="navbar-header page-scroll">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Chi Shen</a>
+                    <a class="navbar-brand" href="#about">Chi Shen</a>
                 </div>
                 <div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li><a href="#about">About</a></li>
+                            <li class="page-scroll"><a href="#about">About</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Projects<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#work">Work</a></li>
-                                    <li><a href="#personal">Personal</a></li>
+                                    <li class="page-scroll"><a href="#work">Work Projects</a></li>
+                                    <li class="page-scroll"><a href="#personal">Side Projects</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -36,10 +39,41 @@
         </div>
         
         <div id="about" class="container-fluid">
+            <div class="heading">
+                <h1>Hi, I'm Chi Shen.<br><small>Enthusiastic in video games and graphics</small></h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="contact-icon" href="mailto:shenchi710@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a class="contact-icon" href="https://twitter.com/shenchi"><i class="fa fa-twitter-square"></i></a>
+                    <a class="contact-icon" href="https://www.linkedin.com/profile/view?id=AAMAAAw4nUkB9YXnm6DBd0T8WMiysVicXUe-1_8"><i class="fa fa-linkedin-square"></i></a>
+                    <a class="contact-icon" href="https://www.github.com/shenchi"><i class="fa fa-github-square"></i></a>
+                </div>
+            </div>
         </div>
         <div id="work" class="container-fluid">
+            <div class="heading">
+                <h1>Work Projects</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-8">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
         </div>
         <div id="personal" class="container-fluid">
+            <div class="heading">
+                <h1>Side Projects</h1>
+            </div>
         </div>
+        
+        <script src="js/index.js"></script>
     </body>
 </html>
