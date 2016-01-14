@@ -1,0 +1,11 @@
+audio {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+}
+
+#player_controls div {
+    padding: 2px
+}

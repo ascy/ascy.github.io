@@ -1,118 +1,69 @@
 'use strict';
-/*
-if (!window.AudioContext) {
-    window.AudioContext = window.webkitAudioContext || window.mozAudioContext;
-}
 
-var audioContext = new AudioContext(),
-    audioBuffer = null,
-    sourceNode = null,
-    gainNode = null,
-    speed = 1.0;
-
-function initAudio() {
-    gainNode = audioContext.createGain();
-    gainNode.connect(audioContext.destination);
-}
-
-function loadAudio(arrayBuffer, onfinish) {
-    audioBuffer = audioContext.decodeAudioData(arrayBuffer, function(buffer) {
-        audioBuffer = buffer;
-        onfinish();
-    });
-    sourceNode = null;
-}
-
-function stopAudio() {
-    if (sourceNode === null) return;
-    sourceNode.stop();
-    sourceNode.disconnect();
-    sourceNode = null;
-}
-
-function playAudio() {
-    if (audioBuffer === null) return;
+function format_time(seconds) {
+    var h = Math.floor(seconds / 3600),
+        m = Math.floor((seconds % 3600) / 60),
+        s = (seconds % 60).toFixed(2),
+        ms = (m < 10 ? "0" + m : m),
+        ss = (s < 10 ? "0" + s : s);
     
-    stopAudio();
-    
-    sourceNode = audioContext.createBufferSource();
-    sourceNode.buffer = audioBuffer;
-    sourceNode.connect(gainNode);
-    
-    changeSpeed(speed);
-    
-    sourceNode.start();
-}
-
-function changeSpeed(val)
-{
-    speed = val;
-    if (sourceNode === null) return;
-    sourceNode.playbackRate.value = speed;
-}
-
-function changeVolume(val)
-{
-    gainNode.gain.value = val;
+    if (h > 0)
+        return h + ":" + ms + ":" + ss;
+    else if (m > 0)
+        return ms + ":" + ss;
+    else
+        return ss;
 }
 
 window.onload = function () {
-    initAudio();
     var audio_file = document.getElementById("audio_file"),
-        play_button = document.getElementById("play_button"),
-        pause_button = document.getElementById("pause_button"),
-        stop_button = document.getElementById("stop_button"),
+        A_button = document.getElementById("A_button"),
+        B_button = document.getElementById("B_button"),
+        A_display = document.getElementById("A_display"),
+        B_display = document.getElementById("B_display"),
         play_rate = document.getElementById("play_rate"),
         play_rate_display = document.getElementById("play_rate_display"),
         audio_player = document.getElementById("audio_player"),
-        enableButtons = function(value) {
-            play_button.disabled = !value;
-            pause_button.disabled = !value;
-            stop_button.disabled = !value;
-        };
+        a = 0.0,
+        b = 0.0;
     
-    enableButtons(false);
     
     audio_file.onchange = function() {
         var url = URL.createObjectURL(this.files[0]);
         audio_player.src = url;
+        a = -1;
+        b = -1;
     };
     
-    play_button.onclick = playAudio;
-    
-    stop_button.onclick = stopAudio;
-    
-    play_rate.oninput = function() {
-        changeSpeed(play_rate.value);
-        play_rate_display.value = play_rate.value;
+    A_button.onclick = function() {
+        if (audio_player.currentTime === a)
+            a = -1;
+        else
+            a = audio_player.currentTime;
+        
+        A_display.value = a < 0 ? "" : format_time(a);
     }
-};
-*/
-
-window.onload = function () {
-    var audio_file = document.getElementById("audio_file"),
-        play_button = document.getElementById("play_button"),
-        pause_button = document.getElementById("pause_button"),
-        stop_button = document.getElementById("stop_button"),
-        play_rate = document.getElementById("play_rate"),
-        play_rate_display = document.getElementById("play_rate_display"),
-        audio_player = document.getElementById("audio_player");
     
-    
-    audio_file.onchange = function() {
-        var url = URL.createObjectURL(this.files[0]);
-        audio_player.src = url;
-    };
-    
-//    play_button.onclick = function() {
-//        audio_player.play();
-//    };
-//    
-//    stop_button.onclick = stopAudio;
+    B_button.onclick = function() {
+        if (audio_player.currentTime === b)
+            b = -1;
+        else
+            b = audio_player.currentTime;
+        
+        B_display.value = b < 0 ? "" : format_time(b);
+    }
     
     play_rate.oninput = function() {
-//        changeSpeed(play_rate.value);
         play_rate_display.value = play_rate.value;
         audio_player.playbackRate = play_rate.value;
-    }
+    };
+    
+    audio_player.ontimeupdate = function() {
+        if (b > 0.0 && audio_player.currentTime >= b) {
+            if (a >= 0.0)
+                audio_player.currentTime = a;
+            else
+                audio_player.currentTime = 0;
+        }
+    };
 };

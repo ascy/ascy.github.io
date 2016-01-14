@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="player.css" type="text/css"/>
+<!--        <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>-->
         <script type="text/javascript" src="player.js"></script>
     </head>
     
     <body>
-        <input id="audio_file" type="file" accept="audio/*" />
-        <input id="play_button" type="button" value="Play" />
-        <input id="pause_button" type="button" value="Pause" />
-        <input id="stop_button" type="button" value="Stop" />
-        <br/>
-        <input id="play_rate_display" type="text" value="1.0" disabled="true" />
-        <input id="play_rate" type="range" min="0.5" max="2.0" step="0.1" value="1.0" />
-        <br/>
-        <audio controls id="audio_player" />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input id="audio_file" type="file" accept="audio/*" />
+                        </div>
+                    </div>
+                    <div class="row" id="player_controls">
+                        <div class="col-sm-1">
+                            <input id="A_button" type="button" value="A" />
+                        </div>
+                        <div class="col-sm-2">
+                            <input id="A_display" type="text" value="" disabled="true" />
+                        </div>
+                        <div class="col-sm-1">
+                            <input id="B_button" type="button" value="B" />
+                        </div>
+                        <div class="col-sm-2">
+                            <input id="B_display" type="text" value="" disabled="true" />
+                        </div>
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-1">
+                            <p>Speed:</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input id="play_rate_display" type="text" value="1.0" disabled="true" />
+                            <input id="play_rate" type="range" min="0.5" max="2.0" step="0.1" value="1.0" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <audio controls id="audio_player" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
     </body>
 </html>
