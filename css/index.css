@@ -82,3 +82,11 @@ footer {
     text-align: center;
     padding: 30px 0;
 }
+
+a {
+    color: #eee
+}
+
+a:hover {
+    color: #fff
+}
